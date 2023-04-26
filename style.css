@@ -1,0 +1,126 @@
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* Navigationsleiste */
+
+
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 20
+}
+
+
+.navbar {
+    height: 72px;
+    background-color: white;
+    border-bottom: 1px solid #efefef;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar * {
+    padding: 10px;
+}
+
+.burger-icon {
+    width: 25px;
+    opacity: 50%;
+}
+
+.mid {
+    font-size: 1.2rem;
+    font-weight: bolder;
+    color: #3b3b3b;
+}
+
+
+.content {
+    display: flex;
+}
+
+/* Main-Content */
+.header-img img{
+    height: 320px;
+    width: 100%;
+    object-fit: cover;
+}
+
+.wrapper {
+    width: 960px;
+    margin: auto;
+}
+
+.left {
+    width: 85%;
+}
+
+.rating a {
+    color: black;
+    margin: 0.5rem;
+}
+
+.description {
+    display: flex;
+    justify-content: space-between;
+}
+
+.headerbuttons {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.icon {
+    background-color: lightgray;
+    width: 46px;
+    height: 46px;
+    border-radius: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.rating {
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+
+.delivery-tags {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+    height: 24px;
+    margin-bottom: 1rem;
+}
+
+.about-paragraph {
+    margin-bottom: 1rem;
+}
+
+.dish-types{
+    display: flex;
+    justify-content: flex-start;
+    gap: 2rem;
+    margin-bottom: 1rem;
+}
+
+.type {
+    padding: .5rem 1rem;
+    background-color: lightgray;
+    border-radius: 16px;
+}
+
+
+/* Shoppingcart */
+.cart {
+    width: 15%;
+    height: 90vh;
+}
