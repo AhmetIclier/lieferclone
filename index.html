@@ -35,6 +35,7 @@
             <div class="header-box">
                 <div class="wrapper">
                     <div class="description">
+                        <img src="img/pizza-logo.png" class="restaurant-logo">
                         <div class="restaurant-title">
                             <h1>Pizzeria d'Ahmet</h1>
                         </div>
@@ -80,7 +81,7 @@
             </div>
             <div class="dish-box">
                 <div class="wrapper">
-                    <div class="dish-type-headline">
+                    <div class="dish-type-headline" id="renderHere">
                         <h2 id="dish-type">Pizza</h2>
                         <div class="dish-card">
                             <div class="dish-title">
@@ -99,12 +100,17 @@
             <div class="cart-title">
                 <h3>Warenkorb</h3>
             </div>
-            <div class="empty-cart">
+            <div id="empty-cart" class="d-none">
                 <span class="material-symbols-outlined big-icon">
                     shopping_bag
                 </span>
                 <h3>Fülle deinen Warenkorb</h3>
                 <p> Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p> 
+            </div>
+            <div id="full-cart" >
+                <div class="dish-in-cart">
+                    <h3 id=""><span id="counter">x</span></h3>
+                </div>
             </div>
         </div>
     </section>
