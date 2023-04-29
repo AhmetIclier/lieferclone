@@ -24,6 +24,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    filter: drop-shadow(0px 10px 8px #4d4d4d2c);
 }
 
 .navbar * {
@@ -54,7 +55,7 @@ body {
 }
 
 .wrapper {
-    width: 960px;
+    max-width: 960px;
     margin: auto;
 }
 
@@ -93,6 +94,14 @@ body {
     margin-bottom: 1.5rem;
 }
 
+.fill {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 20
+}
+
 .delivery-tags {
     display: flex;
     gap: 1rem;
@@ -100,7 +109,11 @@ body {
     height: 24px;
     margin-bottom: 1rem;
 }
-
+.delivery-tag {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
 .about-paragraph {
     margin-bottom: 1rem;
 }
@@ -118,9 +131,47 @@ body {
     border-radius: 16px;
 }
 
+.header-box {
+    background-color: white;
+    filter: drop-shadow(0px 8px 8px #4d4d4d2c);
+    padding-bottom: 1rem;
+}
+
+.dish-box {
+    background-color: #fcfcfc;
+}
+
+.dish-card {
+    padding: 1rem;
+    border: 1px solid lightgray;
+    border-radius: 15px;
+}
+
+.dish-card:hover {
+    cursor: pointer;
+    background-color: lightgray;
+}
+
+.dish-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.marger  {
+    margin-bottom: 10px;
+}
+
+.dish-price {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+}
 
 /* Shoppingcart */
 .cart {
     width: 15%;
-    height: 90vh;
+    height: 100vh;
+    position: sticky;
+    border-left: solid 1px lightgray;
 }
