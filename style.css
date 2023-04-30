@@ -195,15 +195,11 @@ body {
     width: 15%;
     min-width: 340px;
     height: 100vh;
-    position: fixed;
+    position: sticky;
     right:0;
     top: 0;
     border-left: solid 1px lightgray;
-    /* display: flex;
-    justify-content: start;
-    flex-direction: column;
-    align-items: center; */
-    padding-top: 6rem;
+    padding-top: 2rem;
     background-color: white;
     
 }
@@ -245,7 +241,8 @@ body {
 
 .cart-table {
     border: none;
-    width: 340px;
+    width: 300px;
+    margin: auto;
 }
 
 .cart-table tr{
@@ -256,6 +253,7 @@ body {
     padding: 0.5rem;
 }
 
+
 .table-price{
     width: 50px;
     text-align: right;
@@ -264,4 +262,36 @@ body {
 .edit-amount {
     display: flex;
     gap: .5rem;
+}
+
+.dish-in-cart {
+    border-bottom: 1px solid lightgray;
+    padding-bottom: .5rem;
+    padding-top: .5rem;
+}
+
+#checkout {
+    padding: 0 1rem;
+    max-width: 300px;
+}
+
+.checkout-line {
+    display: flex;
+    justify-content: space-between;
+}
+.checkout-line span {
+    margin-bottom: .5rem;
+}
+
+#minOrder {
+    width: 300px;
+    margin: auto;
+    font-size: .75rem;
+}
+
+.yellow-box {
+    padding: .5rem;
+    border-radius: 10px;
+    background-color: #fff9df;
+    margin-bottom: 1rem;
 }

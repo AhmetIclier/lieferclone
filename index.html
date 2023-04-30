@@ -96,36 +96,42 @@
                 </div>
             </div>
         </div>
-        <div class="cart-placeholder"></div>
         <div class="cart">
             <div class="cart-title">
                 <h3>Warenkorb</h3>
             </div>
-            <div id="empty-cart" class="d-none">
+            <div id="empty-cart">
                 <span class="material-symbols-outlined big-icon">
                     shopping_bag
                 </span>
                 <h3>Fülle deinen Warenkorb</h3>
                 <p> Füge einige leckere Gerichte aus der Speisekarte hinzu und bestelle dein Essen.</p> 
             </div>
-            <div id="full-cart"  >
+            <div id="full-cart" class="d-none">
                 
-                <div class="dish-in-cart">
-                    <table class="cart-table">
-                        <tr>
-                            <td>x</td>
-                            <td>Pizza Margharita</td>
-                            <td class="table-price">10,00€</td>
-                        </tr>
-                        <tr>
-                            <td></td>
-                            <td><a href="#">Anmerkung hinzufügen</a></td>
-                            <td class="edit-amount">
-                                <div class="icon"><i class="fa-solid fa-minus fa-sm" style="color: #1e1e1e;"></i></div>
-                                <div class="icon"><i class="fa-regular fa-plus fa-sm" style="color: #1e1e1e;"></i></div>
-                            </td>
-                        </tr>
-                    </table>
+
+                
+            </div>
+
+            <div id="minOrder" class="d-none">
+                <div class="yellow-box">
+                    Benötigter Betrag, um den Mindestbestellwert zu erreichen
+                </div>
+                Leider kannst du noch nicht bestellen. Pizzeria d'Ahmet liefert erst ab einem Mindestbestellwert von 10,00 € (exkl. Lieferkosten).
+            </div>
+
+            <div id="checkout" class="d-none">
+                <div class="checkout-line">
+                    <span>Zwischensumme</span>
+                    <span id="zwischensumme"></span>
+                </div>
+                <div class="checkout-line">
+                    <span>Lieferkosten</span>
+                    <span>1,00 €</span>
+                </div>
+                <div class="checkout-line">
+                    <span><b>Gesamt</b></span>
+                    <span id="checkout-summe"></span>
                 </div>
             </div>
         </div>
