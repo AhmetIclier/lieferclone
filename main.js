@@ -87,7 +87,10 @@ function render() {
 }
 
 function addToCart(e) {
+    let dish = dishes[e];
+    let cartbox = document.getElementById('full-cart');
 
+    
 }
 
 // todo: function plusMeal
