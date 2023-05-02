@@ -296,3 +296,8 @@ body {
     background-color: #fff9df;
     margin-bottom: 1rem;
 }
+
+.edit-amount .icon:hover {
+    cursor: pointer;
+    
+}

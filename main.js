@@ -71,7 +71,7 @@ function render() {
     let dishbox = document.getElementById('renderHere');
     console.log(dishbox);
     dishbox.innerHTML = '';
-    
+
     for (let i = 0; i<dishes.length; i++) {
             dishbox.innerHTML += `
             
@@ -88,26 +88,7 @@ function render() {
     }
 }
 
-
-// if-abfrage für anzeigen des Warenkorbs bzw. anzeigen des aufrufs für Befüllung des Warenkorbs
-
-
-function addToCart(e) {
-    let dish = dishes[e];
-
-    
-
-    let dishToAdd = dish.name;
-    if (dishname.includes(dishToAdd)) {
-        let dishIndex = dishname.indexOf(dishToAdd);
-        plusMeal(dishIndex);
-    } else {
-        dishname.push(dish.name);
-        dishprice.push(dish.price);
-        dishamount.push(1);
-    }
-    
-
+function checkCartContent() {
     if (dishname.length>0) {
         let cartbox = document.getElementById('full-cart');
         cartbox.classList.remove('d-none');
@@ -115,9 +96,35 @@ function addToCart(e) {
         emptycart.classList.add('d-none');
         let checkout = document.getElementById('checkout');
         checkout.classList.remove('d-none');
+    } else {
+        let cartbox = document.getElementById('full-cart');
+        cartbox.classList.add('d-none');
+        let emptycart = document.getElementById('empty-cart');
+        emptycart.classList.remove('d-none');
+        let checkout = document.getElementById('checkout');
+        checkout.classList.add('d-none');
     }
+}
 
+
+function addToCart(e) {
+    let dish = dishes[e];
+
+    let dishToAdd = dish.name;
+    if (dishname.includes(dishToAdd)) {
+        let dishIndex = dishname.indexOf(dishToAdd);
+        dishamount[dishIndex] += 1;
+        
+        // plusMeal(dishIndex);
+        
+    } else {
+        dishname.push(dish.name);
+        dishprice.push(dish.price);
+        dishamount.push(1);
+    }
     renderCheckout();
+    zwischensum();
+    checkCartContent();
 }
 
 // function cartSwitcher() {
@@ -157,14 +164,17 @@ function addToCart(e) {
 function renderCheckout() {
     let cartbox = document.getElementById('full-cart');
     cartbox.innerHTML = '';
+    
+
     for (let i = 0; i<dishname.length; i++) {
+        let zwischensumme = dishprice[i].toFixed(2) * dishamount[i].toFixed(2);
         cartbox.innerHTML += `
             <div class="dish-in-cart" id="dish-num-check${i}">
                 <table class="cart-table">
                     <tr>
                         <td id="counter${i}">${dishamount[i]}</td>
                         <td id="identifier${i}">${dishname[i]}</td>
-                        <td id="dishprice${i}" class="table-price">${dishprice[i].toFixed(2)}€</td>
+                        <td id="dishprice${i}" class="table-price">${zwischensumme.toFixed(2)}€</td>
                     </tr>
                     <tr>
                         <td></td>
@@ -178,15 +188,20 @@ function renderCheckout() {
             </div>
     `;
     }
+    zwischensum();
+    checkCartContent();
+    
 }
 
 function plusMeal(i){
+    dishamount[i] +=1;
     let currentPrice = document.getElementById(`dishprice${i}`);
     let counter = document.getElementById(`counter${i}`);
-    dishamount[i] +=1;
-    counter.innerHTML = dishamount[i];
-    currentPrice.innerHTML = `${(parseFloat(dishprice[i]) * parseFloat(dishamount[i])).toFixed(2)} €`;
     
+    counter.innerHTML = dishamount[i];
+    let newPrice = (parseFloat(dishprice[i]) * parseFloat(dishamount[i])).toFixed(2)
+    currentPrice.innerHTML = `${newPrice} €`;
+    zwischensum();
 }
 
 function minusMeal(i) {
@@ -202,11 +217,30 @@ function minusMeal(i) {
         dishprice.splice(i, 1);
         dishamount.splice(i, 1);
     }
+    zwischensum();
+    checkCartContent();
+}
+
+function zwischensum() {
+    
+    let zwischensumme = 0;
+
+    for (let i = 0; i < dishname.length; i++) {
+        let preisProGericht = dishprice[i] * dishamount[i];
+        zwischensumme += preisProGericht;
+    }
+
+    
+    let zwischensummeContainer = document.getElementById('zwischensumme');
+    zwischensummeContainer.innerHTML = `${zwischensumme.toFixed(2)} €`;
+    getTotal(zwischensumme);
+} 
+
+function getTotal (zwischensumme) {
+    document.getElementById('checkout-summe').innerHTML = `${(zwischensumme +1).toFixed(2)} €`;
 }
 
 
-// todo: function plusMeal
-// todo: function minusMeal
-// todo: function check doubles in basket
+
 // todo: function sum shopping cart
 // todo: function Check mindestbestellwert
