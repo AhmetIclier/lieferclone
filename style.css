@@ -157,6 +157,7 @@ body {
     padding: 1rem;
     border: 1px solid lightgray;
     border-radius: 15px;
+    margin-top: 1rem;
 }
 
 .dish-card:hover {
