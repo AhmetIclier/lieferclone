@@ -89,23 +89,38 @@ function render() {
 }
 
 function checkCartContent() {
-    if (dishname.length>0) {
+    let boolean = true;
+    for (let i = 0; i<dishamount.length; i++) {
+        if (dishamount[i] == 0) {
+            boolean = false;
+        } else if (dishamount[i] > 0) {
+            boolean = true;
+        }
+    }
+
+    
+
+    if (boolean) {      // der boolean ist true, wennn etwas im warenkorb ist
         let cartbox = document.getElementById('full-cart');
         cartbox.classList.remove('d-none');
         let emptycart = document.getElementById('empty-cart');
         emptycart.classList.add('d-none');
         let checkout = document.getElementById('checkout');
         checkout.classList.remove('d-none');
-    } else {
+    } else if (!boolean){
         let cartbox = document.getElementById('full-cart');
         cartbox.classList.add('d-none');
         let emptycart = document.getElementById('empty-cart');
         emptycart.classList.remove('d-none');
         let checkout = document.getElementById('checkout');
         checkout.classList.add('d-none');
-    }
-}
+        let minOrder = document.getElementById('minOrder');
+        minOrder.classList.add('d-none');
+        
 
+    }
+    
+}
 
 function addToCart(e) {
     let dish = dishes[e];
@@ -114,9 +129,6 @@ function addToCart(e) {
     if (dishname.includes(dishToAdd)) {
         let dishIndex = dishname.indexOf(dishToAdd);
         dishamount[dishIndex] += 1;
-        
-        // plusMeal(dishIndex);
-        
     } else {
         dishname.push(dish.name);
         dishprice.push(dish.price);
@@ -127,47 +139,15 @@ function addToCart(e) {
     checkCartContent();
 }
 
-// function cartSwitcher() {
-
-
-//     if (dishamount.length>0) {
-//         let cartbox = document.getElementById('full-cart');
-//         cartbox.classList.remove('d-none');
-//         let emptycart = document.getElementById('empty-cart');
-//         emptycart.classList.add('d-none');
-//         let checkout = document.getElementById('checkout');
-//         checkout.classList.remove('d-none');
-//     } else if (dishamount.length>)
-// }
-
-// function addCheckout() {
-//     // zwischensumme();
-//     let cartbox = document.getElementById('checkout');
-
-//     cartbox.innerHTML = `
-//     <div class="checkout-line">
-//         <span>Zwischensumme</span>
-//         <span id="zwischensumme">${zwischensumme}</span>
-//     </div>
-//     <div class="checkout-line">
-//         <span>Lieferkosten</span>
-//         <span>1,00 €</span>
-//     </div>
-//     <div class="checkout-line">
-//         <span><b>Gesamt</b></span>
-//         <span id="checkout-summe"></span>
-//     </div>
-//     `;
-
-// }
-
 function renderCheckout() {
     let cartbox = document.getElementById('full-cart');
     cartbox.innerHTML = '';
     
 
     for (let i = 0; i<dishname.length; i++) {
-        let zwischensumme = dishprice[i].toFixed(2) * dishamount[i].toFixed(2);
+
+        if (dishamount[i]>0) {
+            let zwischensumme = dishprice[i].toFixed(2) * dishamount[i].toFixed(2);
         cartbox.innerHTML += `
             <div class="dish-in-cart" id="dish-num-check${i}">
                 <table class="cart-table">
@@ -187,6 +167,8 @@ function renderCheckout() {
                 </table>
             </div>
     `;
+        }
+        
     }
     zwischensum();
     checkCartContent();
@@ -205,18 +187,21 @@ function plusMeal(i){
 }
 
 function minusMeal(i) {
-    let currentPrice = document.getElementById(`dishprice${i}`);
-    let counter = document.getElementById(`counter${i}`);
     dishamount[i] -=1;
-    counter.innerHTML = dishamount[i];
-    currentPrice.innerHTML = `${(parseFloat(dishprice[i]) * parseFloat(dishamount[i])).toFixed(2)} €`;
-
     if(dishamount[i] == 0) {
         document.getElementById(`dish-num-check${i}`).innerHTML = '';
-        dishname.splice(i, 1);
-        dishprice.splice(i, 1);
-        dishamount.splice(i, 1);
+        // dishname.splice(i, 1);
+        // dishprice.splice(i, 1);
+        // dishamount.splice(i, 1);
+    } else {
+        let currentPrice = document.getElementById(`dishprice${i}`);
+        let counter = document.getElementById(`counter${i}`);
+        
+        counter.innerHTML = dishamount[i];
+        let newPrice = (parseFloat(dishprice[i]) * parseFloat(dishamount[i])).toFixed(2)
+        currentPrice.innerHTML = `${newPrice} €`;
     }
+    
     zwischensum();
     checkCartContent();
 }
@@ -234,13 +219,19 @@ function zwischensum() {
     let zwischensummeContainer = document.getElementById('zwischensumme');
     zwischensummeContainer.innerHTML = `${zwischensumme.toFixed(2)} €`;
     getTotal(zwischensumme);
+
+    if (zwischensumme < 15) {
+        document.getElementById('minOrder').classList.remove('d-none');
+        document.getElementById('offener-betrag').innerHTML = (15-zwischensumme).toFixed(2);
+        document.getElementById('checkout-btn').classList.remove('checkout-button');
+        document.getElementById('checkout-btn').classList.add('checkout-disabled');
+    } else if (zwischensumme > 15){
+        document.getElementById('minOrder').classList.add('d-none');
+        document.getElementById('checkout-btn').classList.add('checkout-button');
+        document.getElementById('checkout-btn').classList.remove('checkout-disabled');
+    } 
 } 
 
 function getTotal (zwischensumme) {
     document.getElementById('checkout-summe').innerHTML = `${(zwischensumme +1).toFixed(2)} €`;
 }
-
-
-
-// todo: function sum shopping cart
-// todo: function Check mindestbestellwert

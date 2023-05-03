@@ -65,7 +65,7 @@
                         <span class="material-symbols-outlined fill">radio_button_unchecked</span>
                         <div class="delivery-tag">
                             <i class="material-symbols-outlined">shopping_bag</i> 
-                            <span class="">Min. 10,00 €</span>
+                            <span class="">Min. 15,00 €</span>
                         </div>
                     </div>
                     <div class="about-paragraph">
@@ -115,9 +115,9 @@
 
             <div id="minOrder" class="d-none">
                 <div class="yellow-box">
-                    Benötigter Betrag, um den Mindestbestellwert zu erreichen
+                    Benötigter Betrag, um den Mindestbestellwert zu erreichen <span id="offener-betrag"></span> €.
                 </div>
-                Leider kannst du noch nicht bestellen. Pizzeria d'Ahmet liefert erst ab einem Mindestbestellwert von 10,00 € (exkl. Lieferkosten).
+                Leider kannst du noch nicht bestellen. Pizzeria d'Ahmet liefert erst ab einem Mindestbestellwert von 15,00 € (exkl. Lieferkosten).
             </div>
 
             <div id="checkout" class="d-none">
@@ -132,6 +132,11 @@
                 <div class="checkout-line">
                     <span><b>Gesamt</b></span>
                     <span id="checkout-summe"></span>
+                </div>
+                <div class="checkout-btn-line">
+                    <button class="checkout-disabled" id="checkout-btn">
+                        Jetzt bestellen!
+                    </button>
                 </div>
             </div>
         </div>
