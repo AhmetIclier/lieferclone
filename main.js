@@ -72,16 +72,15 @@ let dishamount = [];
 
 function render() {
     let dishbox = document.getElementById("renderHere");
-    console.log(dishbox);
     dishbox.innerHTML = "";
 
     for (let i = 0; i < dishes.length; i++) {
         dishbox.innerHTML += `
             
-            <div class="dish-card" onclick="addToCart(${i})">
+            <div class="dish-card">
                 <div class="dish-title">
                     <h3>${dishes[i].name}</h3>
-                    <div class="icon"><i class="fa-regular fa-plus fa-lg" style="color: #1e1e1e;"></i></div>
+                    <div class="icon"  onclick="addToCart(${i})"><i class="fa-regular fa-plus fa-lg" style="color: #1e1e1e;"></i></div>
                 </div>
                 <div class="dish-info marger">mit ${
                     dishes[i].ingredients
@@ -252,7 +251,7 @@ function showMobileCart() {
     document.getElementById("cart-id").classList.remove("mcart");
     document.getElementById("cart-id").classList.add("show-mobile-cart");
     hideCartButton();
-    noYScroll();
+    
 }
 
 function closeCart() {
