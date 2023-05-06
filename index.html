@@ -30,7 +30,7 @@
         </header>
         <!-- Menu Bar End -->
         <!-- Left-Side -->
-        <section class="content">
+        <section class="content" id="content-id">
             <div class="left" onclick="closeCart()">
                 <div class="header-img">
                     <img src="./img/bg-pizza.jpg" />
@@ -192,13 +192,11 @@
                     </div>
                 </div>
             </div>
-            <button
-                class="mobilecart-btn"
-                id="m-btn-id"
-                onclick="showMobileCart()"
-            >
-                Warenkorb anzeigen
-            </button>
+            <a href="#content-id">
+                <button class="mobilecart-btn" id="m-btn-id" onclick="showMobileCart()">
+                    Warenkorb anzeigen
+                </button>
+            </a>
         </section>
     </body>
 </html>

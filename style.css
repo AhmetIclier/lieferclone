@@ -366,6 +366,7 @@ p {
     }
 
     .mcart {
+        display:none;
         transform: translateX(341px);
         transition: all 225ms ease-in-out;
     }
